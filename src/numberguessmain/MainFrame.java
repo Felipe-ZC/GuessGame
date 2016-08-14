@@ -5,11 +5,15 @@
  */
 package numberguessmain;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame
@@ -17,22 +21,19 @@ public class MainFrame extends JFrame
     // --------------------- Instance variables --------------------- 
     
     // Holds the Frame's layout manager
-    GridBagLayout layout;
-    // Holds the layout maanager's constraints
-    GridBagConstraints constraints;
+    private BorderLayout layout;
     // Holds content pane
-    Container content;
+    private Container content;
     // Holds width of frame
-    final int frameWidth = 300;
+    private final int frameWidth = 500 ;
     // Holds length of frame
-    final int frameLength = 300;
-    // Buttons
-    JButton yes;
-    JButton no;
-    JButton tooHigh;
-    JButton tooLow;
+    private final int frameLength = 200;
     // Displays messages to the user
-    JTextArea textArea;
+    private JTextArea textArea;
+    // Holds control buttons
+    private JPanel buttonsPanel;
+    // Holds font details for textArea
+    private Font fontDetails;
     
     // --------------------- Instance variables ---------------------    
     
@@ -52,41 +53,35 @@ public class MainFrame extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Instantiate layout manager
-        layout = new GridBagLayout();
-        // Instantiate constriants
-        constraints = new GridBagConstraints();
+        layout = new BorderLayout();
                 
         // Set layout manager of frame
         setLayout(layout);
+          
+        ///////////////////////// Buttons Panel /////////////////////////     
         
-        ///////////////////////// Text Area   ///////////////////////// 
+        // Create buttons panel
+        buttonsPanel = new ButtonPanel();
+        // Add button panel to the western portion of the window
+        content.add(buttonsPanel,BorderLayout.WEST);
+        
+        ///////////////////////// Text Area ///////////////////////// 
         
         // Create text area component
-        textArea = new JTextArea(500,30);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord (true);
-        // Disable editing
-        //textArea.setEditable(false);
+        textArea = new JTextArea();
+        textArea.setEditable(false);
         
-        // Set weight 
-        constraints.weightx = 0.5;
-        constraints.weighty = 0.5;
+        // Create Font
+        fontDetails = new Font("Arial",Font.BOLD,11);
+        // Set font
+        textArea.setFont(fontDetails);
+        textArea.setForeground(Color.black);
         
-        // Set x and y coordinates
-        constraints.gridx = 0;
-        constraints.gridy = 0;
+        textArea.append("Welcome!\nWould you like to start a new game?");
         
-        constraints.anchor = GridBagConstraints.PAGE_START ;
-        
-        // Set width and height
-        constraints.gridheight = 50;
-        constraints.gridwidth = 20;
-        constraints.ipady = 50;
-       // constraints.fill = GridBagConstraints.HORIZONTAL;
-        
-        // Add to frame
-       content.add(textArea,constraints);
-       
+        // Add to content pane
+        content.add(textArea,BorderLayout.CENTER);
     }
 }
+
 
