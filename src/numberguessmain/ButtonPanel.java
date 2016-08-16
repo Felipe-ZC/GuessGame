@@ -14,14 +14,14 @@ import javax.swing.JPanel;
 public class ButtonPanel extends JPanel
 {   
     // Buttons
-    JButton yesButton;
-    JButton noButton;
-    JButton tooHighButton;
-    JButton tooLowButton;
+    private JButton yesButton;
+    private JButton noButton;
+    private JButton tooHighButton;
+    private JButton tooLowButton;
     
     // Holds layout manager
-    GridBagLayout layout;
-    GridBagConstraints constraints;
+    private GridBagLayout layout;
+    private GridBagConstraints constraints;
     
     // Constructor
     public ButtonPanel()
@@ -54,6 +54,26 @@ public class ButtonPanel extends JPanel
         createTooLowButton();
         
     }
+    
+    // --------------------------- Accessor Methods --------------------------
+    
+    public JButton getYesButton()
+    {
+        return yesButton;
+    }
+    public JButton getNoButton()
+    {
+        return noButton;
+    }
+    public JButton getTooHighButton()
+    {
+        return tooHighButton;
+    }
+    public JButton getTooLowButton()
+    {
+        return tooLowButton;
+    }
+    // --------------------------- Mutator Methods ---------------------------
     
     // Creates "Yes" button
     private void createYesButton()
@@ -117,6 +137,9 @@ public class ButtonPanel extends JPanel
         // Set anchor
         constraints.anchor = GridBagConstraints.LINE_START;
         
+        // Set disabled on start
+        tooHighButton.setEnabled(false);
+        
         // Add to panel
         add(tooHighButton,constraints);               
     }
@@ -139,7 +162,11 @@ public class ButtonPanel extends JPanel
         // Set anchor
         constraints.anchor = GridBagConstraints.LINE_END;
         
+        // Set disabled on start
+        tooLowButton.setEnabled(false);
+        
         // Add to panel
         add(tooLowButton,constraints);            
     }
-}
+    
+}   

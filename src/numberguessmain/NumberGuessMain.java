@@ -7,14 +7,21 @@ package numberguessmain;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class NumberGuessMain 
 {
 
     public static void main(String[] args)
     {   
-        JFrame frame = new MainFrame("Deez nuts");
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable(){
+           public void run(){
+
+        GuessGame game = new GuessGame();
+        game.showGUI();
+        //game.newGame();
+           }
+        });
     }
     
 }

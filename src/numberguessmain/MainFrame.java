@@ -5,16 +5,10 @@
  */
 package numberguessmain;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
 
 public class MainFrame extends JFrame
 {   
@@ -25,19 +19,16 @@ public class MainFrame extends JFrame
     // Holds content pane
     private Container content;
     // Holds width of frame
-    private final int frameWidth = 500 ;
+    private final int frameWidth = 550 ;
     // Holds length of frame
-    private final int frameLength = 200;
-    // Displays messages to the user
-    private JTextArea textArea;
+    private final int frameLength = 300;
     // Holds control buttons
-    private JPanel buttonsPanel;
-    // Holds font details for textArea
-    private Font fontDetails;
+    private ButtonPanel buttonsPanel;
+    // Holds TextArea that displays messages to user
+    private TextArea textArea;
     
-    // --------------------- Instance variables ---------------------    
+    // --------------------- Constructor -----------------------------    
     
-    // Constructor
     public MainFrame(String title)
     {
         // Call JFrame constructor
@@ -58,29 +49,65 @@ public class MainFrame extends JFrame
         // Set layout manager of frame
         setLayout(layout);
           
-        ///////////////////////// Buttons Panel /////////////////////////     
+        ///////////////////////// Buttons Panel //////////////////////   
         
         // Create buttons panel
         buttonsPanel = new ButtonPanel();
         // Add button panel to the western portion of the window
         content.add(buttonsPanel,BorderLayout.WEST);
-        
+               
         ///////////////////////// Text Area ///////////////////////// 
         
-        // Create text area component
-        textArea = new JTextArea();
-        textArea.setEditable(false);
-        
-        // Create Font
-        fontDetails = new Font("Arial",Font.BOLD,11);
-        // Set font
-        textArea.setFont(fontDetails);
-        textArea.setForeground(Color.black);
-        
-        textArea.append("Welcome!\nWould you like to start a new game?");
-        
+        // Create new Text area
+        textArea = new TextArea();
+
         // Add to content pane
         content.add(textArea,BorderLayout.CENTER);
+        
+        // Display greetiing
+        showWelcomeMessage();
+    }
+    
+    // ---------------------- Accesor Methods ---------------------------
+    
+    public TextArea getTextArea()
+    {
+        return textArea;
+    }
+    
+    public ButtonPanel getButtonsPanel()
+    {
+        return buttonsPanel;
+    }
+    
+    // ---------------------- DIsplay Methods ------------------------------
+    public void showWelcomeMessage()
+    {
+        textArea.append("Welcome!\nWould you like to start a new game?\n");
+    }
+    
+    public void promptUser()
+    {
+        textArea.append("Please think of a number from 1-100\nPress yes when you are ready.\n");
+    }
+        
+    public void askUser(int guess)
+    {
+        textArea.append("Is " + guess + " the number that you're thinking of?\n");
+    }
+    
+    public void showEndMessage(int t)
+    {
+        textArea.append("I win! It took me " + t + " turns to guess your number!\nPlay again?");
+    }
+    
+    // ---------------------- Other Methods ------------------------------
+    
+    // Used to close GUI
+    public void closeGUI()
+    {  
+         JOptionPane.showMessageDialog(rootPane, "Goodbye!", "Thanks for playing!",JOptionPane.INFORMATION_MESSAGE);
+        super.dispose();
     }
 }
 
