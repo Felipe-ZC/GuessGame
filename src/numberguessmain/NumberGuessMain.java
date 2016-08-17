@@ -18,8 +18,8 @@ public class NumberGuessMain
            SwingUtilities.invokeLater(new Runnable(){
            public void run(){
 
-        game.showGUI();
-        //game.newGame();
+        //game.showGUI();
+        game.newGame();
            }
         });
     }

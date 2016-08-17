@@ -19,6 +19,12 @@ public class ButtonPanel extends JPanel
     private JButton tooHighButton;
     private JButton tooLowButton;
     
+    // Represents each button, used for disabling or enabling a button
+    private final int YES_BUTTON;
+    private final int NO_BUTTON;
+    private final int TOO_HIGH_BUTTON;
+    private final int TOO_LOW_BUTTON;
+    
     // Holds layout manager
     private GridBagLayout layout;
     private GridBagConstraints constraints;
@@ -26,6 +32,12 @@ public class ButtonPanel extends JPanel
     // Constructor
     public ButtonPanel()
     {
+        // Initialize constants
+        YES_BUTTON = 0;
+        NO_BUTTON = 1;
+        TOO_HIGH_BUTTON = 2;
+        TOO_LOW_BUTTON = 3;
+        
         Dimension size = getPreferredSize();
         // Set width of panel in pixels
         size.width = 200;
@@ -172,4 +184,59 @@ public class ButtonPanel extends JPanel
     
     // --------------------------- Other Methods ---------------------------
     
+    /*
+    Disables specfied button
+    0 for yes button
+    1 for no button
+    2 for too high button
+    3 for too low button
+    */
+    public void disableButton(int button)
+    {
+        switch(button)
+        {
+            case 0:
+                yesButton.setEnabled(false);
+                break;
+            case 1:
+                noButton.setEnabled(false);
+                break;
+            case 2:
+                tooHighButton.setEnabled(false);
+                break;
+            case 3:
+                tooLowButton.setEnabled(false);
+                break;
+            default:
+                break;      
+        }
+    }
+    
+    /*
+    Enables specfied button
+    0 for yes button
+    1 for no button
+    2 for too high button
+    3 for too low button
+    */
+    public void enableButton(int button)
+    {
+        switch(button)
+        {
+            case 0:
+                yesButton.setEnabled(true);
+                break;
+            case 1:
+                noButton.setEnabled(true);
+                break;
+            case 2:
+                tooHighButton.setEnabled(true);
+                break;
+            case 3:
+                tooLowButton.setEnabled(true);
+                break;
+            default:
+                break;      
+        }
+    }
 }   

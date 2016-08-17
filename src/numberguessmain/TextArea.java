@@ -26,5 +26,10 @@ public class TextArea extends JTextArea
         setFont(fontDetails);
         setForeground(Color.black);
     }
+    // ------------------------ Other mthods ---------------------------
+    public void clear()
+    {
+        setText(null);
+    }
     
 }

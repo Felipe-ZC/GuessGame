@@ -96,6 +96,11 @@ public class MainFrame extends JFrame
         textArea.append("Is " + guess + " the number that you're thinking of?\n");
     }
     
+    public void showGameMessage()
+    {
+        textArea.append("Was my guess too high or too low?\n");
+    }
+    
     public void showEndMessage(int t)
     {
         textArea.append("I win! It took me " + t + " turns to guess your number!\nPlay again?");
@@ -106,9 +111,31 @@ public class MainFrame extends JFrame
     // Used to close GUI
     public void closeGUI()
     {  
-         JOptionPane.showMessageDialog(rootPane, "Goodbye!", "Thanks for playing!",JOptionPane.INFORMATION_MESSAGE);
+        // Show exit message
+        JOptionPane.showMessageDialog(rootPane, "Goodbye!", "Thanks for playing!",JOptionPane.INFORMATION_MESSAGE);
         super.dispose();
+    }
+    
+     // Used to disable a button on buttonPanel
+    public void disable(int b)
+    {
+        buttonsPanel.disableButton(b);
+    }
+    
+    // Used to enable a button on buttonPanel
+    public void enable(int b)
+    {
+        buttonsPanel.enableButton(b);
+    }
+    
+    // Used to erase all text from textArea
+    public void clearText()
+    {
+        textArea.clear();
     }
 }
 
+
+
+   
 
