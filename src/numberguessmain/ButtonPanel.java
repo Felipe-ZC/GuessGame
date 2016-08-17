@@ -73,6 +73,7 @@ public class ButtonPanel extends JPanel
     {
         return tooLowButton;
     }
+    
     // --------------------------- Mutator Methods ---------------------------
     
     // Creates "Yes" button
@@ -168,5 +169,7 @@ public class ButtonPanel extends JPanel
         // Add to panel
         add(tooLowButton,constraints);            
     }
+    
+    // --------------------------- Other Methods ---------------------------
     
 }   

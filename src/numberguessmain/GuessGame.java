@@ -39,15 +39,20 @@ public class GuessGame {
      */
     private final int INITIAL = 0;
     /*
+    Once the user has started a new game, this new state in invoked,
+    here the program will display THE FIRST GUESS by the computer
+    */
+    private final int INITIAL_GUESS = 1;
+    /*
     This state is used when asking the user if the
     computers guess is correct. The only buttons
     enabled in this state are the yes and no buttons
      */
-    private final int ASK_USER = 1;
+    private final int ASK_USER = 2;
     /*
     This state is used when asking the user if
      */
-    private final int HIGH_OR_LOW = 2;
+    private final int HIGH_OR_LOW = 3;
     // Holds all GUI elements
     private MainFrame frame;
 
@@ -68,10 +73,19 @@ public class GuessGame {
     // Stars a new Guess game
     public void newGame() 
     {
+        // Get button panel
+        ButtonPanel bp = frame.getButtonsPanel();
+        // Get yes/no buttons
+        
        // Perform different actions depending on gameState
         switch(gameState)
         {
-            
+            case HIGH_OR_LOW:
+                // Disable yes and no buttons
+                
+                break;
+            default:
+                break;
         }
     }
         
@@ -128,13 +142,21 @@ public class GuessGame {
         {
                 switch(gameState)
                 {
-                    case INITIAL :
+                   case INITIAL :
                         // Prompt user to think of a number between 1-100
                         frame.promptUser();
                         // Change game state
-                        gameState = ASK_USER;
+                        gameState = INITIAL_GUESS;
                         break;
-                    case ASK_USER: 
+                   case INITIAL_GUESS:
+                       // Get current guess
+                       int currGuess = numGame.getGuess();
+                       // Show user first computer guess
+                       frame.askUser(currGuess);
+                       // Change game state to ASK_USER
+                       gameState = ASK_USER;
+                        break;
+                   case ASK_USER: 
                         // Computer guess is correct, print win message and number of turns
                         frame.showEndMessage(turns);
                         break;
@@ -155,6 +177,8 @@ public class GuessGame {
                           frame.closeGUI();
                           break;
                       case ASK_USER:
+                            // If the number the computer has guessed is not correct, change state
+                          gameState= HIGH_OR_LOW;
                           break;
                   }
               }

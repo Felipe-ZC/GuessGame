@@ -14,10 +14,10 @@ public class NumberGuessMain
 
     public static void main(String[] args)
     {   
-        SwingUtilities.invokeLater(new Runnable(){
+           GuessGame game = new GuessGame();
+           SwingUtilities.invokeLater(new Runnable(){
            public void run(){
 
-        GuessGame game = new GuessGame();
         game.showGUI();
         //game.newGame();
            }
