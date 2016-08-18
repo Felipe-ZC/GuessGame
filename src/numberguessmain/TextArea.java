@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package numberguessmain;
 
 import java.awt.Color;
@@ -10,14 +5,19 @@ import java.awt.Font;
 import javax.swing.JTextArea;
 
 /**
- * MAKE SCROLLABLE!!!!
- * @author zu
+ * A modified JTextArea class that defines a specific font and color for the text area,
+ * also makes the JTextArea uneditable.
+ * @author Felipe Zuniga
  */
 public class TextArea extends JTextArea
 {
-    // Holds font details
+    /**
+     * Holds specific font properties.
+     */
     private Font fontDetails; 
+    
     // --------------------------- Constructor ---------------------------
+    
     public TextArea()
     {        
         // Create Font
@@ -27,7 +27,12 @@ public class TextArea extends JTextArea
         setForeground(Color.black);
         setEditable(false);
     }
-    // ------------------------ Other mthods ---------------------------
+    
+    // ------------------------ Other methods ---------------------------
+    
+    /**
+     * Clears all text in a TextArea oject.
+     */
     public void clear()
     {
         setText(null);

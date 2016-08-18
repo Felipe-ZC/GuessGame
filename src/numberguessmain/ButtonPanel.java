@@ -8,22 +8,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- *
- * @author zu
+ * Holds the controls for the GuessGame GUI, contains 4 buttons that
+ * enable or disable depending on the state of the GuessGame.
+ * @author Felipe Zuniga
  */
 public class ButtonPanel extends JPanel
 {   
-    // Buttons
+
     private JButton yesButton;
     private JButton noButton;
     private JButton tooHighButton;
     private JButton tooLowButton;
-    
-    // Represents each button, used for disabling or enabling a button
-    private final int YES_BUTTON;
-    private final int NO_BUTTON;
-    private final int TOO_HIGH_BUTTON;
-    private final int TOO_LOW_BUTTON;
     
     // Holds layout manager
     private GridBagLayout layout;
@@ -32,12 +27,7 @@ public class ButtonPanel extends JPanel
     // Constructor
     public ButtonPanel()
     {
-        // Initialize constants
-        YES_BUTTON = 0;
-        NO_BUTTON = 1;
-        TOO_HIGH_BUTTON = 2;
-        TOO_LOW_BUTTON = 3;
-        
+
         Dimension size = getPreferredSize();
         // Set width of panel in pixels
         size.width = 200;
@@ -88,7 +78,9 @@ public class ButtonPanel extends JPanel
     
     // --------------------------- Mutator Methods ---------------------------
     
-    // Creates "Yes" button
+    /**
+     * Sets constraints for yes button and adds it to the panel.
+     */
     private void createYesButton()
     {
         // Create new constraints
@@ -110,7 +102,9 @@ public class ButtonPanel extends JPanel
         add(yesButton,constraints);
     }
     
-    // Creates "No" button
+    /**
+     * Sets constraints for no button and adds it to the panel.
+     */
     private void createNoButton()
     {
         // Create new constraints
@@ -132,7 +126,9 @@ public class ButtonPanel extends JPanel
         add(noButton,constraints);       
     }
     
-    // Creates "Too high" button
+    /**
+     * Sets constraints for too high button and adds it to the panel.
+     */
     private void createTooHighButton()
     {
         // Create new constraints
@@ -157,7 +153,9 @@ public class ButtonPanel extends JPanel
         add(tooHighButton,constraints);               
     }
     
-    // Creaes "Too low" button
+    /**
+     * Sets constraints for too low button and adds it to the panel.
+     */
     private void createTooLowButton()
     {
         // Create new constraints
@@ -184,13 +182,14 @@ public class ButtonPanel extends JPanel
     
     // --------------------------- Other Methods ---------------------------
     
-    /*
-    Disables specfied button
-    0 for yes button
-    1 for no button
-    2 for too high button
-    3 for too low button
-    */
+    /**
+     * Disables the specified button on the panel.
+     * @param button The button to disable:
+     * 0 disables the yes button
+     * 1 disables the no button
+     * 2 disables the too high button
+     * 3 disables the too low button
+     */
     public void disableButton(int button)
     {
         switch(button)
@@ -208,17 +207,18 @@ public class ButtonPanel extends JPanel
                 tooLowButton.setEnabled(false);
                 break;
             default:
-                break;      
+                throw new IllegalArgumentException();
         }
     }
     
-    /*
-    Enables specfied button
-    0 for yes button
-    1 for no button
-    2 for too high button
-    3 for too low button
-    */
+    /**
+     * Enables the specified button on the panel.
+     * @param button The button to enable:
+     * 0 enables the yes button
+     * 1 enables the no button
+     * 2 enables the too high button
+     * 3 enables the too low button
+     */
     public void enableButton(int button)
     {
         switch(button)
@@ -236,7 +236,7 @@ public class ButtonPanel extends JPanel
                 tooLowButton.setEnabled(true);
                 break;
             default:
-                break;      
+                throw new IllegalArgumentException();
         }
     }
 }   

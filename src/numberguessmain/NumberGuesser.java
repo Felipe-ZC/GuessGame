@@ -9,23 +9,32 @@ public class NumberGuesser
 {   
     // ------------------------------ Private Members ------------------------------
     
-    // Holds the lowest value possible
+    /**
+     *  Holds the lowest number currently being considered.
+     */
     private int low;
-    // Holds the highest value possible 
+    
+   /**
+    * Holds the highest number currently being considered.
+    */
     private int high;
-    // Holds the middle value between low and high
+    
+    /**
+     * Holds the number between high and low.
+     */
     private int middle;
-    
-    // ------------------------------ Private Members ------------------------------
-    
+   
     // ------------------------------ Public Members -------------------------------
     
     // Constructor
     public NumberGuesser()
     {           
         // Set number values
+        // Lowest number in from 1-100
         low = 1;
+        // Highest number from 1-100
         high = 100;
+        // This number is what the computer uses to "guess" the users number
         middle = (low+high) / 2;
     }    
     
@@ -44,19 +53,12 @@ public class NumberGuesser
         return high;
     }
     
-    // -------------------- Accessor methods --------------------
-    
     // -------------------- Mutator methods --------------------
     
-    /*
-    This method is used to update the value of the lowest and middle numbers.
-    If the number the computer has guessed is too high the program then changes
-    the lowest value possible to one more than the middle value, then the middle
-    value is recalculated. 
-    
-    This ensure that the program takes no unnecssary steps in guessing the users 
-    number.
-    */
+    /**
+     *   This method updates the lowest value being considered, this way the program
+     * takes no unnecessary steps in guessing the user's number.
+     */
     public void updateLow()
     {
         // Make lowest value possible one more than the current middle value
@@ -65,24 +67,15 @@ public class NumberGuesser
         middle = (low + high) / 2;
     }
     
-    /*
-    This method is used to update the value of the highest and middle numbers.
-    If the number the computer has guessed is too low the program then changes
-    the highest value possible to one less than the middle value, then the middle
-    value is recalculated. 
-    
-    This ensure that the program takes no unnecssary steps in guessing the users 
-    number.
-    */
+    /**
+     *  This method updates the highest value being considered, this way the program
+     * takes no unnecessary steps in guessing the user's number.
+     */
     public void updateHigh()
     {
         // Make the highest value possible one less than the current middle value
         high = middle - 1;
         middle = (low + high) / 2;
     }
-    
-    // -------------------- Mutator methods --------------------
-    
-    // ------------------------------ Public Members -------------------------------
      
 }

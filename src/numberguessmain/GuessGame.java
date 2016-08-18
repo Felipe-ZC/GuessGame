@@ -1,91 +1,91 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package numberguessmain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
- * A class to drive the NumberGuesser class This class provides user prompts and
- * makes a game out of guessing the users number FIX COMMENTS!!!!
- *
- * @author zu
+ * A class to play the GuessGame which consists in the user thinking of a number
+ * from 1-100 and the computer (program) guessing that number in 7 turns or less.
+ * @author Felipe Zuniga
  */
-public class GuessGame {
+public class GuessGame
+{
     // ------------------------------ Private Members ------------------------------
 
-    // Holds the class with the appropriate methods to guess a number from 1-100
-    private NumberGuesser numGame;
-    // Holds the number of turns it takes the computer to guess the users number
-    private int turns;
-    /*
-    If this value is false the computer has not guessed the users number correctly
-    and true otherwise
+    /**
+     * Performs the nececcsary operations to guess the users number (1-100).
      */
-    private boolean guessed;
-    // Determines GUI behavior
+    private NumberGuesser numGame;
+    
+    /**
+     * Holds the number of guesses it takes the computer to the guess the user's number
+     * correctly.
+     */
+    private int turns;
+
+    /**
+     * Determines GUI behvior as well as the look, the possible vallues are
+     * constants that decide what the computer should do next.
+     */
     private int gameState;
-    // Differente state values affect the look and function of the GUI
-    /*
-    This state is used when starting a new game
-    The only buttons enable in this state are the
-    yes and no buttons
+    
+    /**
+     *  This state is used when starting a new game, in this state
+     * the too high, too low buttons are disabled.
      */
     private final int INITIAL = 0;
-    /*
-    Once the user has started a new game, this new state in invoked,
-    here the program will display THE FIRST GUESS by the computer
-    */
+
+    /**
+     *  Once the user has started a new game this state is invoked, here
+     * the program will display THE FIRST GUESS made by the computer.
+     */
     private final int INITIAL_GUESS = 1;
-    /*
-    This state is used when asking the user if the
-    computers guess is correct. The only buttons
-    enabled in this state are the yes and no buttons
+    
+    /**
+     * This state is used when asking the user if the computer guess
+     * is correct, only the yes and no buttons are enabled in this state.
      */
     private final int ASK_USER = 2;
-    /*
-    This state is used when asking the user if
+    
+    /**
+     * This state is used when the computer has guessed incorrectly and must ask
+     * the user if its guess was too high or too low, yes and no buttons are disabled
+     * in this sate.
      */
     private final int HIGH_OR_LOW = 3;
-    /*
-    This state is used when the computer has guessed the users number and asks to play a new game
-    */
+
+    /**
+     * This state is used when the computer has guessed the user's number and ask if he/she will like
+     * to play a new game.
+     */
     private final int END_GAME = 4;
-    // Holds all GUI elements
+    
+    /**
+     * Holds the GUI.
+     */
     private MainFrame frame;
 
-    // ------------------------------ Public Members -------------------------------
+    // ------------------------------ Public Members ------------------------------
+    
     // Constructor
     public GuessGame() {
         numGame = new NumberGuesser();
         // Create frame
         frame = new MainFrame("Guess game");
         turns = 0;
-        guessed = false;
         // Set initial state
         gameState = INITIAL;
         // Set all button listeners
         setButtonListeners();
     }
-
-        
-    /*
-    Displays a message box asking user if the computer guess is correct
-    Returns 0 if the computer is correct and 1 otherwise. Takes in 
-    a number that represents the computers guess
-     */
-    public int validateGuess(int guessValue) {
-        int answer = JOptionPane.showConfirmDialog(null, "Is " + guessValue + " your number?", null, JOptionPane.YES_NO_OPTION);
-        return answer;
-    }
     
-    // Resets all instance variables and shatr
+    /**
+     *  Creates a new NumberGuesser object, resets turns and sets game state to INITIAL,
+     * this method should be used when starting a new GuessGame AFTER at least one
+     * game has been played and completed.
+     */
    public void newGame()
    {
         frame.clearText();
@@ -99,36 +99,21 @@ public class GuessGame {
         gameState = INITIAL;       
    }
 
-    /*
-    Displays a message box asking the user if the number the computer guessed
-    was too high or too low. Returns 1 if the guess was too low and 0 if the
-    guess was too high
-     */
-    public int highOrLow() {
-        Object[] options = {"Too high",
-            "Too low"};
-        int answer = JOptionPane.showOptionDialog(null,
-                "Was the number too high or too low?",
-                "A Question",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null, //do not use a custom Icon
-                options, //the titles of buttons
-                options[0]); //default button title
-
-        return answer;
-    }
+     // ------------------------------ GUI ------------------------------
     
-    
-    /////////////////////////////////// GUI ///////////////////////////////////////
-    
+   /**
+    * Makes GUI visible, should be called when starting a new instance of GuessGame.
+    */
     public void showGUI()
     {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
-    // ------------------------------ Button listeners ------------------------------
+    /**
+     * Defines and sets all button listeners for the GUI, this must be done here as the behavior of the GUI
+     * depends on the status (state) of a GuessGame.
+     */
     private void setButtonListeners()
     {   
          // Get button panel from frame
