@@ -155,7 +155,7 @@ public class GuessGame
                        newGame();
                        break;
                    default:
-                       break;
+                       throw new IllegalArgumentException();
                 }
         }   
     });
@@ -188,7 +188,7 @@ public class GuessGame
                           // Exit Game
                           frame.closeGUI();
                       default:
-                          break;
+                          throw new IllegalArgumentException();
                   }
               }
           });
