@@ -19,7 +19,7 @@ public class MainFrame extends JFrame
     // Holds content pane
     private Container content;
     // Holds width of frame
-    private final int frameWidth = 550 ;
+    private final int frameWidth = 600 ;
     // Holds length of frame
     private final int frameLength = 300;
     // Holds control buttons
@@ -60,9 +60,11 @@ public class MainFrame extends JFrame
         
         // Create new Text area
         textArea = new TextArea();
+        // Create new scroll pane
+        JScrollPane scrollPane = new JScrollPane(textArea);
 
         // Add to content pane
-        content.add(textArea,BorderLayout.CENTER);
+        content.add(scrollPane,BorderLayout.CENTER);
         
         // Display greetiing
         showWelcomeMessage();
@@ -93,7 +95,7 @@ public class MainFrame extends JFrame
         
     public void askUser(int guess)
     {
-        textArea.append("Is " + guess + " the number that you're thinking of?\n");
+        textArea.append("\nIs " + guess + " the number that you're thinking of?\n");
     }
     
     public void showGameMessage()

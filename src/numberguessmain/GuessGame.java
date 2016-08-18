@@ -74,25 +74,6 @@ public class GuessGame {
         setButtonListeners();
     }
 
-    // Stars a new Guess game
-    public void newGame() 
-    {   
-        showGUI();
-        // Get button panel
-        ButtonPanel bp = frame.getButtonsPanel();
-        // Get yes/no buttons
-        
-       // Perform different actions depending on gameState
-        switch(gameState)
-        {
-            case HIGH_OR_LOW:
-                // Disable yes and no buttons
-                System.out.println("DEEZ NUTS BOI");
-                break;
-            default:
-                break;
-        }
-    }
         
     /*
     Displays a message box asking user if the computer guess is correct
@@ -103,6 +84,20 @@ public class GuessGame {
         int answer = JOptionPane.showConfirmDialog(null, "Is " + guessValue + " your number?", null, JOptionPane.YES_NO_OPTION);
         return answer;
     }
+    
+    // Resets all instance variables and shatr
+   public void newGame()
+   {
+        frame.clearText();
+        //Show welcome message
+        frame.showWelcomeMessage();
+        // Create a new numGame
+        numGame = new NumberGuesser();
+        // Reset number of turns
+        turns = 0;
+        // Change gameState
+        gameState = INITIAL;       
+   }
 
     /*
     Displays a message box asking the user if the number the computer guessed
@@ -148,6 +143,7 @@ public class GuessGame {
                 switch(gameState)
                 {
                    case INITIAL :
+                       frame.clearText();
                         // Prompt user to think of a number between 1-100
                         frame.promptUser();
                         // Change game state
@@ -160,6 +156,7 @@ public class GuessGame {
                        frame.askUser(currGuess);
                        // Add one to turns
                        ++turns;
+                       System.out.println(turns);
                        // Change game state to ASK_USER
                        gameState = ASK_USER;
                         break;
@@ -170,11 +167,7 @@ public class GuessGame {
                         gameState = END_GAME;
                         break;
                    case END_GAME:
-                       frame.clearText();
-                       //Show welcome message
-                       frame.showWelcomeMessage();
-                       // Change gameState
-                       gameState = INITIAL;
+                       newGame();
                        break;
                    default:
                        break;

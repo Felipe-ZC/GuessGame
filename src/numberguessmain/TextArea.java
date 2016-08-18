@@ -10,7 +10,7 @@ import java.awt.Font;
 import javax.swing.JTextArea;
 
 /**
- *
+ * MAKE SCROLLABLE!!!!
  * @author zu
  */
 public class TextArea extends JTextArea
@@ -21,10 +21,11 @@ public class TextArea extends JTextArea
     public TextArea()
     {        
         // Create Font
-        fontDetails = new Font("Arial",Font.BOLD,11);
+        fontDetails = new Font("Arial",Font.BOLD,12);
         // Set font
         setFont(fontDetails);
         setForeground(Color.black);
+        setEditable(false);
     }
     // ------------------------ Other mthods ---------------------------
     public void clear()

@@ -95,8 +95,8 @@ public class ButtonPanel extends JPanel
         constraints = new GridBagConstraints();
         
         // Set constraints
-        constraints.weightx = 0.1;
-        constraints.weighty = 0.1;
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.5;
         constraints.gridx = 0;
         constraints.gridy = 0;
         
@@ -104,7 +104,7 @@ public class ButtonPanel extends JPanel
         constraints.fill = GridBagConstraints.BOTH;
                
         // Set anchor
-        constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+        //constraints.anchor = GridBagConstraints.FIRST_LINE_START;
         
         // Add to panel
         add(yesButton,constraints);
@@ -117,8 +117,8 @@ public class ButtonPanel extends JPanel
         constraints = new GridBagConstraints();
         
         // Set constraints
-        constraints.weightx = 0.1;
-        constraints.weighty = 0.1;
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.5;
         constraints.gridx = 1;
         constraints.gridy = 0;
         
@@ -126,7 +126,7 @@ public class ButtonPanel extends JPanel
         constraints.fill = GridBagConstraints.BOTH;
         
         // Set anchor
-        constraints.anchor = GridBagConstraints.PAGE_START;
+       // constraints.anchor = GridBagConstraints.PAGE_START;
         
         // Add to panel
         add(noButton,constraints);       
@@ -139,8 +139,8 @@ public class ButtonPanel extends JPanel
         constraints = new GridBagConstraints();
         
         // Set constraints
-        constraints.weightx = 0.1;
-        constraints.weighty = 0.1;
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.5;
         constraints.gridx = 0;
         constraints.gridy = 1;
         
@@ -148,7 +148,7 @@ public class ButtonPanel extends JPanel
         constraints.fill = GridBagConstraints.BOTH;
         
         // Set anchor
-        constraints.anchor = GridBagConstraints.LINE_START;
+       // constraints.anchor = GridBagConstraints.LINE_START;
         
         // Set disabled on start
         tooHighButton.setEnabled(false);
@@ -164,8 +164,8 @@ public class ButtonPanel extends JPanel
         constraints = new GridBagConstraints();
         
         // Set constraints
-        constraints.weightx = 0.1;
-        constraints.weighty = 0.1;
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.5;
         constraints.gridx = 1;
         constraints.gridy = 1;
         
@@ -173,7 +173,7 @@ public class ButtonPanel extends JPanel
         constraints.fill = GridBagConstraints.BOTH;
         
         // Set anchor
-        constraints.anchor = GridBagConstraints.LINE_END;
+       // constraints.anchor = GridBagConstraints.LINE_END;
         
         // Set disabled on start
         tooLowButton.setEnabled(false);
