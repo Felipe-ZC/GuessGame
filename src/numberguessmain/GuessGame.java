@@ -12,7 +12,7 @@ import javax.swing.JFrame;
  */
 public class GuessGame
 {
-    // ------------------------------ Private Members ------------------------------
+    // ------------------------------  Private Members  ------------------------------
 
     /**
      * Performs the nececcsary operations to guess the users number (1-100).
@@ -71,12 +71,9 @@ public class GuessGame
     
     // Constructor
     public GuessGame() {
-        numGame = new NumberGuesser();
         // Create frame
         frame = new MainFrame("Guess game");
-        turns = 0;
-        // Set initial state
-        gameState = INITIAL;
+        newGame();
         // Set all button listeners
         setButtonListeners();
     }
@@ -118,7 +115,7 @@ public class GuessGame
     {   
          // Get button panel from frame
          ButtonPanel bp = frame.getButtonsPanel();
-         
+             
          /////////////////////////// Yes Button ///////////////////////////
         JButton yButton = bp.getYesButton();
          // Set action listener
@@ -128,34 +125,36 @@ public class GuessGame
                 switch(gameState)
                 {
                    case INITIAL :
-                       frame.clearText();
                         // Prompt user to think of a number between 1-100
                         frame.promptUser();
                         // Change game state
                         gameState = INITIAL_GUESS;
                         break;
-                   case INITIAL_GUESS:
+                        
+                   case INITIAL_GUESS:               
                        // Get current guess
                        int currGuess = numGame.getGuess();
                        // Show user first computer guess
                        frame.askUser(currGuess);
                        // Add one to turns
                        ++turns;
-                       System.out.println(turns);
                        // Change game state to ASK_USER
                        gameState = ASK_USER;
                         break;
+                        
                    case ASK_USER: 
                         // Computer guess is correct, print win message and number of turns
                         frame.showEndMessage(turns);
                         // Change game state
                         gameState = END_GAME;
                         break;
+                        
                    case END_GAME:
                        newGame();
                        break;
+                       
                    default:
-                       throw new IllegalArgumentException();
+                       break;
                 }
         }   
     });
@@ -172,6 +171,7 @@ public class GuessGame
                           // Exit Game
                           frame.closeGUI();
                           break;
+                          
                       case ASK_USER:
                           // Disable yes, no buttons
                           frame.disable(0);
@@ -179,16 +179,20 @@ public class GuessGame
                           // Enable too high, low buttons
                           frame.enable(2);
                           frame.enable(3);
-                          // Show message
+                          
+                          // Show too high, too low message
                           frame.showGameMessage();
-                            // If the number the computer has guessed is not correct, change state
+                           // The computer has not guessed correctly, change state
                           gameState= HIGH_OR_LOW;
                           break;
+                          
                       case END_GAME:
                           // Exit Game
                           frame.closeGUI();
+                          break;
+                          
                       default:
-                          throw new IllegalArgumentException();
+                         break;
                   }
               }
           });
@@ -201,17 +205,22 @@ public class GuessGame
              {
                   // Guess lower
                  numGame.updateHigh();
+                 
                  // Show new guess
                  int currGuess = numGame.getGuess();
                  frame.askUser(currGuess);
+                 
                  // Add one to turns
                  ++turns;
+                 
                  // Enable yes, no buttons
                 frame.enable(0);
                 frame.enable(1);
+                
                 // Disable too high,low buttons
                 frame.disable(2);
                 frame.disable(3);
+                
                  // Change game state
                  gameState = ASK_USER;                 
              }
@@ -225,17 +234,22 @@ public class GuessGame
              {
                   // Guess lower
                  numGame.updateLow();
+                 
                  // Show new guess
                  int currGuess = numGame.getGuess();
                  frame.askUser(currGuess);
+                 
                  // Add one to turns
                  ++turns;
+                 
                  // Enable yes, no buttons
                  frame.enable(0);
                   frame.enable(1);
+                  
                   // Disable too high,low buttons
                   frame.disable(2);
                   frame.disable(3);
+                  
                  // Change game state
                  gameState = ASK_USER;                 
              }

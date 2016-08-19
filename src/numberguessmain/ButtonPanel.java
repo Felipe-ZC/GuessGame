@@ -14,10 +14,27 @@ import javax.swing.JPanel;
  */
 public class ButtonPanel extends JPanel
 {   
-
+    /**
+     *  This button is used to confirm actions with the
+     * GUI.
+     */
     private JButton yesButton;
+    
+    /**
+     *  This button is used deny actions on the GUI.
+     */
     private JButton noButton;
+    
+    /**
+     * This button is used to indicate that the number
+     * the computer guessed was too high.
+     */
     private JButton tooHighButton;
+    
+    /**
+     * This button is used to indicate that the number
+     * the computer guessed was too low.
+     */
     private JButton tooLowButton;
     
     // Holds layout manager
@@ -207,7 +224,7 @@ public class ButtonPanel extends JPanel
                 tooLowButton.setEnabled(false);
                 break;
             default:
-                throw new IllegalArgumentException();
+                break;
         }
     }
     
@@ -236,7 +253,7 @@ public class ButtonPanel extends JPanel
                 tooLowButton.setEnabled(true);
                 break;
             default:
-                throw new IllegalArgumentException();
+                break;
         }
     }
 }   

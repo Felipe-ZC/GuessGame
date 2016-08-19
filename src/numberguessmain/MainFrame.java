@@ -64,9 +64,6 @@ public class MainFrame extends JFrame
 
         // Add to content pane
         content.add(scrollPane,BorderLayout.CENTER);
-        
-        // Display greetiing
-        showWelcomeMessage();
     }
     
     // ---------------------- Accesor Methods ---------------------------
